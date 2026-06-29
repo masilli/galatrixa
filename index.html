@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GalaTrixa | Lizards of Macaronesia - Lagartos da Macaronésia</title>
+    <meta name="description" content="Discover the unique lizards of the Atlantic islands (Canaries, Madeira, Azores). Explore Gallotia and Teira dugesii in English & Portuguese.">
+    <meta name="keywords" content="GalaTrixa, Gallotia, Teira dugesii, Macaronesia, lizards, Canaries, Madeira, Azores, reptiles">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://galatrixa.org/">
+    <meta property="og:title" content="GalaTrixa | Lizards of Macaronesia">
+    <meta property="og:description" content="Explore the unique lizards of the Canary Islands, Madeira, and Azores. Learn about the ancient Gallotia and the highly adaptable Teira dugesii.">
+    <meta property="og:image" content="assets/gallotia_hero_bg.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Schema.org JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "GalaTrixa | Lizards of Macaronesia - Lagartos da Macaronésia",
+      "description": "Discover the unique lizards of the Atlantic islands (Canaries, Madeira, Azores). Explore Gallotia and Teira dugesii in English & Portuguese.",
+      "url": "https://galatrixa.org/",
+      "image": "assets/gallotia_hero_bg.jpg"
+    }
+    </script>
+</head>
+<body class="lang-en">
+
+    <!-- Header Navigation -->
+    <header id="site-header" class="site-header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">Gala</span>Trixa
+            </a>
+            <nav class="nav-links">
+                <a href="#biogeography">
+                    <span lang="en">Islands</span>
+                    <span lang="pt">Ilhas</span>
+                </a>
+                <a href="#explorer">
+                    <span lang="en">Species Explorer</span>
+                    <span lang="pt">Explorador de Espécies</span>
+                </a>
+                <a href="#fun-facts">
+                    <span lang="en">Fun Facts</span>
+                    <span lang="pt">Curiosidades</span>
+                </a>
+                <a href="#conservation">
+                    <span lang="en">Conservation</span>
+                    <span lang="pt">Conservação</span>
+                </a>
+                <a href="#links">
+                    <span lang="en">Links</span>
+                    <span lang="pt">Ligações</span>
+                </a>
+            </nav>
+            
+            <div style="display: flex; align-items: center;">
+                <!-- Sleek Language Switcher -->
+                <div class="lang-switcher">
+                    <button id="lang-btn-en" class="lang-btn active" aria-label="Switch to English">EN</button>
+                    <button id="lang-btn-pt" class="lang-btn" aria-label="Mudar para Português">PT</button>
+                </div>
+                
+                <a href="#explorer" class="nav-cta">
+                    <span lang="en">Explore</span>
+                    <span lang="pt">Explorar</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-background-overlay"></div>
+            <div class="hero-content">
+                <div class="tagline">
+                    <span lang="en">Vanguards of the Volcanic Isles</span>
+                    <span lang="pt">Vanguardas das Ilhas Vulcânicas</span>
+                </div>
+                <h1 class="hero-title">
+                    <span lang="en">Lizards of Macaronesia</span>
+                    <span lang="pt">Lagartos da Macaronésia</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span lang="en">Exploring the unique evolutionary journeys of the endemic <em>Gallotia</em> and <em>Teira</em> lizards across the Azores, Madeira, and Canary archipelagos.</span>
+                    <span lang="pt">Explorando as viagens evolutivas únicas dos lagartos endémicos <em>Gallotia</em> e <em>Teira</em> pelos arquipélagos dos Açores, Madeira e Canárias.</span>
+                </p>
+                <div class="hero-actions">
+                    <a href="#explorer" class="btn btn-primary">
+                        <span lang="en">Start Exploring</span>
+                        <span lang="pt">Começar a Explorar</span>
+                    </a>
+                    <a href="#biogeography" class="btn btn-secondary">
+                        <span lang="en">Learn About the Islands</span>
+                        <span lang="pt">Saber Mais Sobre as Ilhas</span>
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span class="mouse-icon"><span class="mouse-wheel"></span></span>
+                <span lang="en">Scroll to discover</span>
+                <span lang="pt">Role para descobrir</span>
+            </div>
+        </section>
+
+        <!-- Biogeography Section -->
+        <section id="biogeography" class="section biogeography-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2>
+                        <span lang="en">Isolated Worlds: The Atlantic Archipelagos</span>
+                        <span lang="pt">Mundos Isolados: Os Arquipélagos do Atlântico</span>
+                    </h2>
+                    <p class="section-intro">
+                        <span lang="en">Across millions of years, oceanic islands served as isolated natural laboratories. Here, lizards developed extraordinary traits, adapting to local ecological niches untouched by mainland competition.</span>
+                        <span lang="pt">Ao longo de milhões de anos, as ilhas oceânicas serviram como laboratórios naturais isolados. Aqui, os lagartos desenvolveram características extraordinárias, adaptando-se a nichos ecológicos locais intocados pela competição continental.</span>
+                    </p>
+                </div>
+                
+                <div class="islands-grid">
+                    <!-- Canary Islands -->
+                    <article class="island-card scroll-reveal" id="card-canary">
+                        <div class="island-card-content">
+                            <span class="island-badge badge-canary">
+                                <span lang="en">Canary Islands</span>
+                                <span lang="pt">Ilhas Canárias</span>
+                            </span>
+                            <h3>
+                                <span lang="en">The Realm of <em>Gallotia</em></span>
+                                <span lang="pt">O Reino de <em>Gallotia</em></span>
+                            </h3>
+                            <p>
+                                <span lang="en">Endemic for over 20 million years, the Canary Islands host the genus <strong>Gallotia</strong>. These lizards are renowned for <em>island gigantism</em>, producing massive species that filled ecological roles typically occupied by herbivorous mammals on the mainland.</span>
+                                <span lang="pt">Endémicas há mais de 20 milhões de anos, as Ilhas Canárias albergam o género <strong>Gallotia</strong>. Estes lagartos são famosos pelo <em>gigantismo insular</em>, produzindo espécies gigantes que ocuparam papéis ecológicos tipicamente desempenhados por mamíferos herbívoros no continente.</span>
+                            </p>
+                            <ul class="island-highlights">
+                               <li>
+                                   <strong><span lang="en">Endemism:</span><span lang="pt">Endemismo:</span></strong> 
+                                   <span lang="en">100% native genus</span><span lang="pt">Género 100% nativo</span>
+                               </li>
+                               <li>
+                                   <strong><span lang="en">Signature Trait:</span><span lang="pt">Característica:</span></strong> 
+                                   <span lang="en">Island gigantism (up to 80cm)</span><span lang="pt">Gigantismo insular (até 80cm)</span>
+                               </li>
+                               <li>
+                                   <strong><span lang="en">Primary Habitat:</span><span lang="pt">Habitat Principal:</span></strong> 
+                                   <span lang="en">Volcanic fields & scrublands</span><span lang="pt">Campos vulcânicos e matagais</span>
+                               </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Madeira -->
+                    <article class="island-card scroll-reveal" id="card-madeira">
+                        <div class="island-card-content">
+                            <span class="island-badge badge-madeira">Madeira</span>
+                            <h3>
+                                <span lang="en">The Sanctuary of <em>Teira</em></span>
+                                <span lang="pt">O Santuário de <em>Teira</em></span>
+                            </h3>
+                            <p>
+                                <span lang="en">Madeira is home to the endemic <strong>Madeiran wall lizard</strong> (<em>Teira dugesii</em>). Unlike the giants of the Canaries, these lizards are small, agile, and remarkably dense, reaching some of the highest terrestrial vertebrate population densities on Earth.</span>
+                                <span lang="pt">A Madeira é o lar do <strong>lagarto-da-madeira</strong> endémico (<em>Teira dugesii</em>). Ao contrário dos gigantes das Canárias, estes lagartos são pequenos, ágeis e incrivelmente numerosos, atingindo algumas das maiores densidades populacionais de vertebrados terrestres na Terra.</span>
+                            </p>
+                            <ul class="island-highlights">
+                               <li>
+                                   <strong><span lang="en">Endemism:</span><span lang="pt">Endemismo:</span></strong> 
+                                   <span lang="en">Endemic to Madeira & Selvagens</span><span lang="pt">Endémico da Madeira e Selvagens</span>
+                               </li>
+                               <li>
+                                   <strong><span lang="en">Signature Trait:</span><span lang="pt">Característica:</span></strong> 
+                                   <span lang="en">Extreme agility & density</span><span lang="pt">Agilidade extrema e densidade</span>
+                               </li>
+                               <li>
+                                   <strong><span lang="en">Primary Habitat:</span><span lang="pt">Habitat Principal:</span></strong> 
+                                   <span lang="en">From rocky shores to high peaks</span><span lang="pt">Das rochas costeiras aos picos altos</span>
+                               </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Azores -->
+                    <article class="island-card scroll-reveal" id="card-azores">
+                        <div class="island-card-content">
+                            <span class="island-badge badge-azores">
+                                <span lang="en">Azores</span>
+                                <span lang="pt">Açores</span>
+                            </span>
+                            <h3>
+                                <span lang="en">The Accidental Pioneers</span>
+                                <span lang="pt">Os Pioneiros Acidentais</span>
+                            </h3>
+                            <p>
+                                <span lang="en">The Azores archipelago has no native reptiles. However, the Madeiran wall lizard was accidentally introduced via trade ships. Now naturalized, it thrives across the islands but poses complex challenges to sensitive nesting seabirds.</span>
+                                <span lang="pt">O arquipélago dos Açores não tem répteis nativos. No entanto, o lagarto-da-madeira foi introduzido acidentalmente através de navios de comércio. Hoje naturalizado, prospera nas ilhas mas coloca desafios complexos a aves marinhas nidificantes sensíveis.</span>
+                            </p>
+                            <ul class="island-highlights">
+                               <li>
+                                   <strong><span lang="en">Status:</span><span lang="pt">Estado:</span></strong> 
+                                   <span lang="en">Non-native, introduced species</span><span lang="pt">Espécie introduzida, não-nativa</span>
+                               </li>
+                               <li>
+                                   <strong><span lang="en">Impact:</span><span lang="pt">Impacto:</span></strong> 
+                                   <span lang="en">Predator on seabird eggs</span><span lang="pt">Predador de ovos de aves marinhas</span>
+                               </li>
+                               <li>
+                                   <strong><span lang="en">Action:</span><span lang="pt">Ação:</span></strong> 
+                                   <span lang="en">Lizard exclusion zones</span><span lang="pt">Zonas de exclusão de lagartos</span>
+                               </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Species Explorer -->
+        <section id="explorer" class="section explorer-section">
+            <div class="container">
+                <div class="grid-explorer">
+                    
+                    <!-- Text Info Column -->
+                    <div class="explorer-text scroll-reveal">
+                        <h2>
+                            <span lang="en">Interactive Species Explorer</span>
+                            <span lang="pt">Explorador Interativo de Espécies</span>
+                        </h2>
+                        <p class="explorer-intro">
+                            <span lang="en">Select a Macaronesian lizard from the interactive dropdown to explore its distribution, conservation status, unique traits, and links to in-depth research.</span>
+                            <span lang="pt">Selecione um lagarto da Macaronésia no menu suspenso interativo para explorar a sua distribuição, estado de conservação, características únicas e ligações para pesquisa aprofundada.</span>
+                        </p>
+                        
+                        <!-- Custom Select / Dropdown Container -->
+                        <div class="dropdown-wrapper">
+                            <label for="species-select" class="dropdown-label">
+                                <span lang="en">Choose a species:</span>
+                                <span lang="pt">Escolha uma espécie:</span>
+                            </label>
+                            <div class="custom-select-container">
+                                <select id="species-select" class="species-select">
+                                    <option value="gallotia_galloti" selected>Gallotia galloti (Tenerife Lizard / Lagarto de Tenerife)</option>
+                                    <option value="gallotia_stehlini">Gallotia stehlini (Gran Canaria Giant Lizard / Lagarto-gigante de Gran Canária)</option>
+                                    <option value="gallotia_simonyi">Gallotia simonyi (El Hierro Giant Lizard / Lagarto-gigante de El Hierro)</option>
+                                    <option value="gallotia_atlantica">Gallotia atlantica (Atlantic Lizard / Lagarto do Atlântico)</option>
+                                    <option value="teira_dugesii">Teira dugesii (Madeiran Wall Lizard / Lagarto-da-madeira)</option>
+                                </select>
+                                <div class="select-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wikipedia-backlink-note">
+                            <p>
+                                <span lang="en">All profiles include verified backlinks directly to the respective Wikipedia entries for expanded learning and biological details.</span>
+                                <span lang="pt">Todos os perfis incluem hiperligações diretas e verificadas para as respetivas entradas da Wikipédia para aprendizagem alargada e detalhes biológicos.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Profile Card -->
+                    <div class="explorer-card-container scroll-reveal">
+                        <div id="species-card" class="species-card">
+                            <div class="card-bg-glow"></div>
+                            <div class="card-inner">
+                                <div class="species-header">
+                                    <div>
+                                        <span id="species-island-badge" class="island-badge badge-canary">Tenerife & La Palma</span>
+                                        <h3 id="species-common-name">Tenerife Lizard</h3>
+                                        <h4 id="species-scientific-name"><em>Gallotia galloti</em></h4>
+                                    </div>
+                                    <div class="status-indicator">
+                                        <span class="status-label">
+                                            <span lang="en">Status</span>
+                                            <span lang="pt">Estado</span>
+                                        </span>
+                                        <span id="species-status" class="status-value status-lc">Least Concern</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="species-image-placeholder">
+                                    <!-- A container showing the species photo as cover background -->
+                                    <div class="lizard-avatar" id="lizard-avatar" style="background-image: url('https://commons.wikimedia.org/wiki/Special:FilePath/Gallotia_galloti_LC0211.jpg');"></div>
+                                </div>
+
+                                <div class="species-stats">
+                                    <div class="stat-box">
+                                        <span class="stat-title">
+                                            <span lang="en">Average Size</span>
+                                            <span lang="pt">Tamanho Médio</span>
+                                        </span>
+                                        <span id="species-size" class="stat-detail">30 - 45 cm</span>
+                                    </div>
+                                    <div class="stat-box">
+                                        <span class="stat-title">
+                                            <span lang="en">Primary Diet</span>
+                                            <span lang="pt">Dieta Principal</span>
+                                        </span>
+                                        <span id="species-diet" class="stat-detail">Omnivorous (Plants & Insects)</span>
+                                    </div>
+                                </div>
+
+                                <p id="species-description" class="species-description">
+                                    The Tenerife Lizard is famous for the striking bright blue patches on the cheeks and sides of mature males.
+                                </p>
+
+                                <div class="species-actions">
+                                    <a id="species-wiki-link" href="https://en.wikipedia.org/wiki/Gallotia_galloti" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+                                        <span lang="en">View on Wikipedia</span>
+                                        <span lang="pt">Ver na Wikipédia</span>
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 13V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V8C3 7.46957 3.21071 6.96086 3.58579 6.58579C3.96086 6.21071 4.46957 6 5 6H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15 3H21V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Fun Facts Section -->
+        <section id="fun-facts" class="section fun-facts-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2>
+                        <span lang="en">Fascinating Lizard Trivia</span>
+                        <span lang="pt">Curiosidades Fascinantes</span>
+                    </h2>
+                    <p class="section-intro">
+                        <span lang="en">Discover the surprising survival adaptations, historical quirks, and ecological mysteries that make these Macaronesian reptiles evolutionary icons.</span>
+                        <span lang="pt">Descubra as surpreendentes adaptações de sobrevivência, particularidades históricas e mistérios ecológicos que tornam estes répteis da Macaronésia ícones evolutivos.</span>
+                    </p>
+                </div>
+
+                <div class="facts-grid">
+                    <!-- Fact 1 -->
+                    <div class="fact-card scroll-reveal">
+                        <div class="fact-icon">🦖</div>
+                        <h3>
+                            <span lang="en">Island Gigantism</span>
+                            <span lang="pt">Gigantismo Insular</span>
+                        </h3>
+                        <p>
+                            <span lang="en">In the absence of mammalian predators, several lizard species in the Canary Islands evolved to massive sizes. The extinct subfossil species <em>†Gallotia goliath</em> reached lengths exceeding one meter, making it a true miniature dragon of its era.</span>
+                            <span lang="pt">Na ausência de predadores mamíferos, várias espécies de lagartos nas Ilhas Canárias evoluíram para tamanhos massivos. A espécie extinta subfóssil <em>†Gallotia goliath</em> atingia comprimentos superiores a um metro, tornando-se num verdadeiro dragão em miniatura da sua era.</span>
+                        </p>
+                    </div>
+
+                    <!-- Fact 2 -->
+                    <div class="fact-card scroll-reveal">
+                        <div class="fact-icon">🍷</div>
+                        <h3>
+                            <span lang="en">Vineyard Companions</span>
+                            <span lang="pt">Companheiros das Vinhas</span>
+                        </h3>
+                        <p>
+                            <span lang="en">In Madeira and Tenerife, wall lizards are famous for their love of ripe grapes. During harvest seasons, they climb vines to feed on sweet fruits, making them a common sight (and occasionally a minor pest) in island vineyards.</span>
+                            <span lang="pt">Na Madeira e em Tenerife, os lagartos são famosos pelo seu amor a uvas maduras. Durante as épocas das vindimas, escalam as videiras para se alimentarem de frutos doces, sendo uma visão comum (e por vezes uma pequena praga) nas vinhas das ilhas.</span>
+                        </p>
+                    </div>
+
+                    <!-- Fact 3 -->
+                    <div class="fact-card scroll-reveal">
+                        <div class="fact-icon">🥚</div>
+                        <h3>
+                            <span lang="en">Seabird Nest Invaders</span>
+                            <span lang="pt">Invasores de Aves Marinhas</span>
+                        </h3>
+                        <p>
+                            <span lang="en">In the Azores, where they are introduced, Madeiran wall lizards have adapted to scavenging and hunting on isolated islets. They prey on the eggs and small chicks of nesting Cory's shearwaters, posing a modern challenge for seabird conservationists.</span>
+                            <span lang="pt">Nos Açores, onde foram introduzidos, os lagartos-da-madeira adaptaram-se a procurar alimento e caçar em ilhéus isolados. Alimentam-se de ovos e pequenas crias de cagarras nidificantes, representando um desafio moderno para os conservacionistas.</span>
+                        </p>
+                    </div>
+
+                    <!-- Fact 4 -->
+                    <div class="fact-card scroll-reveal">
+                        <div class="fact-icon">🦎</div>
+                        <h3>
+                            <span lang="en">Tail Dropping Artistry</span>
+                            <span lang="pt">A Arte da Queda da Cauda</span>
+                        </h3>
+                        <p>
+                            <span lang="en">Like many lizards, these species practice <em>autotomy</em>—dropping their tails when grabbed by a predator. The detached tail continues to wiggle aggressively to distract the attacker, while the lizard makes a quiet escape. A new tail grows back in a few months!</span>
+                            <span lang="pt">Como muitos lagartos, estas espécies praticam a <em>autotomia</em> — largando as suas caudas quando agarrados por um predador. A cauda desprendida continua a mover-se freneticamente para distrair o atacante, enquanto o lagarto foge discretamente. Uma nova cauda volta a crescer em poucos meses!</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conservation Section -->
+        <section id="conservation" class="section conservation-section">
+            <div class="container">
+                <div class="conservation-layout">
+                    
+                    <div class="conservation-content scroll-reveal">
+                        <span class="section-tag">
+                            <span lang="en">Conservation & Ecology</span>
+                            <span lang="pt">Conservação e Ecologia</span>
+                        </span>
+                        <h2>
+                            <span lang="en">Guardians of the Archipelagos</span>
+                            <span lang="pt">Guardiões dos Arquipélagos</span>
+                        </h2>
+                        <p>
+                            <span lang="en">Many giant <em>Gallotia</em> species faced extreme pressures from human colonization, habitat destruction, and introduced predators like feral cats and rats. In fact, species like the La Gomera giant lizard (<em>Gallotia bravoana</em>) and the El Hierro giant lizard (<em>Gallotia simonyi</em>) were long thought to be extinct before being rediscovered in tiny, inaccessible cliff refuges.</span>
+                            <span lang="pt">Muitas espécies gigantes de <em>Gallotia</em> enfrentaram pressões extremas com a colonização humana, destruição de habitats e predadores introduzidos como gatos selvagens e ratos. De facto, espécies como o lagarto-gigante de La Gomera (<em>Gallotia bravoana</em>) e o lagarto-gigante de El Hierro (<em>Gallotia simonyi</em>) foram consideradas extintas por muito tempo antes de serem redescobertas em pequenos refúgios rochosos inacessíveis.</span>
+                        </p>
+                        
+                        <p>
+                            <span lang="en">Today, dedicated recovery programs, captive breeding facilities, and strict reserve protection are helping rescue these ancient giants from the brink of extinction. By protecting them, we preserve the unique evolutionary heritage of our planet.</span>
+                            <span lang="pt">Hoje, programas de recuperação dedicados, instalações de reprodução em cativeiro e uma proteção rigorosa de reservas estão a ajudar a salvar estes gigantes antigos da extinção. Ao protegê-los, preservamos o património evolutivo único do nosso planeta.</span>
+                        </p>
+                        
+                        <div class="conservation-stats-row">
+                            <div class="c-stat">
+                                <span class="c-number">&lt; 500</span>
+                                <span class="c-label">
+                                    <span lang="en">El Hierro Giant Lizards in the wild</span>
+                                    <span lang="pt">Lagartos-gigantes de El Hierro na natureza</span>
+                                </span>
+                            </div>
+                            <div class="c-stat">
+                                <span class="c-number">1999</span>
+                                <span class="c-label">
+                                    <span lang="en">La Gomera species rediscovered</span>
+                                    <span lang="pt">Espécie de La Gomera redescoberta</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conservation-graphic scroll-reveal">
+                        <div class="graphic-card">
+                            <div class="graphic-icon">🛡️</div>
+                            <h3>
+                                <span lang="en">How to Protect Island Wildlife</span>
+                                <span lang="pt">Como Proteger a Vida Selvagem</span>
+                            </h3>
+                            <ul class="conservation-tips">
+                                <li>
+                                    <strong>
+                                        <span lang="en">Prevent Biosecurity Leaks</span>
+                                        <span lang="pt">Prevenir Falhas de Biossegurança</span>
+                                    </strong>
+                                    <span lang="en">Ensure cargo ships and flights do not accidentally transport invasive species to vulnerable islets.</span>
+                                    <span lang="pt">Garantir que navios e voos de carga não transportam acidentalmente espécies invasoras para ilhéus vulneráveis.</span>
+                                </li>
+                                <li>
+                                    <strong>
+                                        <span lang="en">Support Captive Breeding</span>
+                                        <span lang="pt">Apoiar Reprodução em Cativeiro</span>
+                                    </strong>
+                                    <span lang="en">Local research stations on Gran Canaria, El Hierro, and La Gomera operate breeding centers vital to species survival.</span>
+                                    <span lang="pt">Estações de pesquisa locais em Gran Canária, El Hierro e La Gomera operam centros vitais para a sobrevivência das espécies.</span>
+                                </li>
+                                <li>
+                                    <strong>
+                                        <span lang="en">Ecosystem Balance</span>
+                                        <span lang="pt">Equilíbrio dos Ecossistemas</span>
+                                    </strong>
+                                    <span lang="en">Controlling feral cat and rodent populations around key lizard reserves.</span>
+                                    <span lang="pt">Controlar populações de gatos selvagens e roedores em redor das principais reservas de lagartos.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Research & Quick Links Section -->
+        <section id="links" class="section links-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2>
+                        <span lang="en">Research & Quick Links</span>
+                        <span lang="pt">Pesquisa e Ligações Úteis</span>
+                    </h2>
+                    <p class="section-intro">
+                        <span lang="en">Explore scientific literature, field journals, conservation databases, and articles about Macaronesia's endemic reptiles.</span>
+                        <span lang="pt">Explore literatura científica, diários de campo, bases de dados de conservação e artigos sobre os répteis endémicos da Macaronésia.</span>
+                    </p>
+                </div>
+
+                <div class="links-grid scroll-reveal">
+                    <!-- Card 1: Canary Islands Field Guide -->
+                    <div class="links-card">
+                        <h3>
+                            <span lang="en">Canary Reptiles Field Guide</span>
+                            <span lang="pt">Guia de Répteis das Canárias</span>
+                        </h3>
+                        <p>
+                            <span lang="en">An extensive guide detailing the taxonomy, ecological traits, and island distribution of Canary Islands endemic lizards.</span>
+                            <span lang="pt">Um guia detalhado sobre a taxonomia, características ecológicas e distribuição insular dos lagartos endémicos das Canárias.</span>
+                        </p>
+                        <a href="https://sparrou.net/pt/la-tierra/peninsula-iberica/reptiles-endemicos-de-canarias/" target="_blank" rel="noopener" class="link-btn-url">
+                            <span>sparrou.net</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V8C3 7.46957 3.21071 6.96086 3.58579 6.58579C3.96086 6.21071 4.46957 6 5 6H11"></path><path d="M15 3H21V9"></path><path d="M10 14L21 3"></path></svg>
+                        </a>
+                    </div>
+
+                    <!-- Card 2: Species Wikipedia Directory -->
+                    <div class="links-card">
+                        <h3>
+                            <span lang="en">Wikipedia References</span>
+                            <span lang="pt">Referências da Wikipédia</span>
+                        </h3>
+                        <p>
+                            <span lang="en">Direct Wikipedia backlinks to the taxonomy, habitat data, and status logs of all species:</span>
+                            <span lang="pt">Hiperligações diretas da Wikipédia para a taxonomia, dados de habitat e estado de todas as espécies:</span>
+                         </p>
+                         <div class="wiki-links-subgrid">
+                             <a href="https://en.wikipedia.org/wiki/Gallotia_galloti" target="_blank" rel="noopener" class="link-chip">G. galloti</a>
+                             <a href="https://en.wikipedia.org/wiki/Gallotia_stehlini" target="_blank" rel="noopener" class="link-chip">G. stehlini</a>
+                             <a href="https://en.wikipedia.org/wiki/El_Hierro_giant_lizard" target="_blank" rel="noopener" class="link-chip">G. simonyi</a>
+                             <a href="https://en.wikipedia.org/wiki/Gallotia_atlantica" target="_blank" rel="noopener" class="link-chip">G. atlantica</a>
+                             <a href="https://en.wikipedia.org/wiki/Madeiran_wall_lizard" target="_blank" rel="noopener" class="link-chip">T. dugesii</a>
+                         </div>
+                     </div>
+
+                     <!-- Card 3: Conservation Databases -->
+                     <div class="links-card">
+                         <h3>
+                             <span lang="en">Conservation Registries</span>
+                             <span lang="pt">Registos de Conservação</span>
+                         </h3>
+                         <p>
+                             <span lang="en">Official project databases monitoring threatened wildlife and habitat restoration in Madeira, Azores, and Canary Islands.</span>
+                             <span lang="pt">Bases de dados oficiais de projetos que monitorizam a vida selvagem ameaçada e a restauração de habitats.</span>
+                         </p>
+                         <div class="wiki-links-subgrid">
+                             <a href="https://www.iucnredlist.org/" target="_blank" rel="noopener" class="link-chip">IUCN Red List</a>
+                             <a href="https://www.lifeazoresnatura.eu/" target="_blank" rel="noopener" class="link-chip">LIFE Azores Natura</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+
+     </main>
+
+     <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo"><span class="logo-accent">Gala</span>Trixa</a>
+                <p>
+                    <span lang="en">An educational showcase dedicated to the herpetological diversity and conservation of the Macaronesian islands.</span>
+                    <span lang="pt">Uma vitrine educativa dedicada à diversidade herpetológica e à conservação das ilhas da Macaronésia.</span>
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>
+                    <span lang="en">Navigation</span>
+                    <span lang="pt">Navegação</span>
+                </h4>
+                <ul>
+                    <li>
+                        <a href="#hero">
+                            <span lang="en">Home</span>
+                            <span lang="pt">Início</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#biogeography">
+                            <span lang="en">Islands</span>
+                            <span lang="pt">Ilhas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#explorer">
+                            <span lang="en">Species Explorer</span>
+                            <span lang="pt">Explorador de Espécies</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#fun-facts">
+                            <span lang="en">Fun Facts</span>
+                            <span lang="pt">Curiosidades</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#links">
+                            <span lang="en">Useful Links</span>
+                            <span lang="pt">Ligações Úteis</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-seo-links">
+                <h4>
+                    <span lang="en">External Resources</span>
+                    <span lang="pt">Recursos Externos</span>
+                </h4>
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/Gallotia" target="_blank" rel="noopener">Gallotia (Wikipedia)</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Teira_dugesii" target="_blank" rel="noopener">Teira dugesii (Wikipedia)</a></li>
+                    <li><a href="https://www.iucnredlist.org/" target="_blank" rel="noopener">IUCN Red List</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 GalaTrixa. <span lang="en">Designed for education and ecological awareness.</span><span lang="pt">Concebido para educação e sensibilização ecológica.</span></p>
+                <p>
+                    <span lang="en">All data sourced from herpetological publications and open archives.</span>
+                    <span lang="pt">Todos os dados provêm de publicações herpetológicas e arquivos abertos.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1165 @@
+/* ==========================================================================
+   Lizards of Macaronesia Landing Page Stylesheet
+   ========================================================================== */
+
+/* 1. Design System & Variables */
+:root {
+    --bg-dark: #090b0c;
+    --bg-card: rgba(20, 24, 28, 0.55);
+    --bg-card-hover: rgba(28, 34, 40, 0.7);
+    --border-glass: rgba(255, 255, 255, 0.07);
+    --border-glass-hover: rgba(255, 255, 255, 0.15);
+    
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    /* Brand Accents */
+    --accent-teal: #00e5ff;
+    --accent-teal-glow: rgba(0, 229, 255, 0.15);
+    --accent-amber: #ff9f1c;
+    --accent-amber-glow: rgba(255, 159, 28, 0.15);
+    --accent-green: #10b981;
+    --accent-red: #ef4444;
+    
+    /* Layout */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --max-width: 1200px;
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. Language Toggle System */
+body.lang-en [lang="pt"] {
+    display: none !important;
+}
+body.lang-pt [lang="en"] {
+    display: none !important;
+}
+
+/* Lang Switcher Component */
+.lang-switcher {
+    display: flex;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: 30px;
+    padding: 2px;
+    margin-right: 15px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.lang-btn:hover {
+    color: var(--text-primary);
+}
+
+.lang-btn.active {
+    background-color: var(--accent-teal);
+    color: #090b0c;
+    box-shadow: 0 2px 10px var(--accent-teal-glow);
+}
+
+/* 3. Reset & Global Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for sticky header */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: #1e242a;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #2d363f;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+strong {
+    color: var(--text-primary);
+}
+
+em {
+    font-style: italic;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Section Common Styles */
+.section {
+    padding: 100px 0;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--text-primary) 30%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-intro {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary {
+    background-color: var(--accent-teal);
+    color: #050708;
+    border: none;
+    box-shadow: 0 4px 20px var(--accent-teal-glow);
+}
+
+.btn-primary:hover {
+    background-color: #ffffff;
+    box-shadow: 0 4px 25px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    border: 1px solid var(--border-glass);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-block {
+    display: flex;
+    width: 100%;
+}
+
+/* Island Badges */
+.island-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.badge-canary {
+    background-color: rgba(255, 159, 28, 0.12);
+    color: var(--accent-amber);
+    border: 1px solid rgba(255, 159, 28, 0.25);
+}
+
+.badge-madeira {
+    background-color: rgba(0, 229, 255, 0.12);
+    color: var(--accent-teal);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+.badge-azores {
+    background-color: rgba(168, 85, 247, 0.12);
+    color: #a855f7;
+    border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+
+/* 3. Header & Navigation */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(9, 11, 12, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-glass);
+    transition: var(--transition-smooth);
+}
+
+.nav-container {
+    width: 90%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.logo-accent {
+    color: var(--accent-teal);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    position: relative;
+    padding: 8px 0;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-teal);
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-cta {
+    display: inline-flex;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--accent-teal);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    background-color: rgba(0, 229, 255, 0.03);
+    transition: var(--transition-smooth);
+}
+
+.nav-cta:hover {
+    background-color: var(--accent-teal);
+    color: #050708;
+    box-shadow: 0 4px 15px var(--accent-teal-glow);
+}
+
+
+/* 4. Hero Section */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 0 80px 0;
+    background-image: url('assets/gallotia_hero_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(9, 11, 12, 0.45) 0%, 
+        rgba(9, 11, 12, 0.85) 60%,
+        var(--bg-dark) 100%
+    );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.tagline {
+    font-family: var(--font-heading);
+    color: var(--accent-teal);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 30px;
+    background-color: rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+.hero-title {
+    font-size: 4rem;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 40%, #a5f3fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-family: var(--font-heading);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.mouse-icon {
+    width: 24px;
+    height: 40px;
+    border: 2px solid var(--text-muted);
+    border-radius: 20px;
+    position: relative;
+}
+
+.mouse-wheel {
+    width: 4px;
+    height: 8px;
+    background-color: var(--accent-teal);
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+    0% { top: 8px; opacity: 1; }
+    50% { top: 20px; opacity: 0; }
+    100% { top: 8px; opacity: 1; }
+}
+
+
+/* 5. Biogeography Section */
+.islands-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.island-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    overflow: hidden;
+    padding: 35px;
+    position: relative;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+}
+
+.island-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+    z-index: -1;
+}
+
+.island-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-glass-hover);
+    background-color: var(--bg-card-hover);
+}
+
+/* Card custom glow bases */
+#card-canary:hover {
+    box-shadow: 0 10px 40px rgba(255, 159, 28, 0.05);
+}
+#card-madeira:hover {
+    box-shadow: 0 10px 40px rgba(0, 229, 255, 0.05);
+}
+#card-azores:hover {
+    box-shadow: 0 10px 40px rgba(168, 85, 247, 0.05);
+}
+
+.island-card h3 {
+    font-size: 1.5rem;
+    margin: 20px 0 15px 0;
+}
+
+.island-card p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.island-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+}
+
+.island-highlights li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.island-highlights li::before {
+    content: '✦';
+    color: var(--accent-teal);
+    font-size: 0.8rem;
+}
+
+#card-canary .island-highlights li::before {
+    color: var(--accent-amber);
+}
+
+#card-azores .island-highlights li::before {
+    color: #a855f7;
+}
+
+
+/* 6. Species Explorer Section */
+.grid-explorer {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.explorer-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--text-primary) 30%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.explorer-intro {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+/* Custom Dropdown Styles */
+.dropdown-wrapper {
+    margin-bottom: 30px;
+}
+
+.dropdown-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.custom-select-container {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+}
+
+.species-select {
+    width: 100%;
+    padding: 16px 24px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none; /* Hide native dropdown styling */
+    -webkit-appearance: none;
+    transition: var(--transition-smooth);
+    outline: none;
+}
+
+.species-select:focus, .species-select:hover {
+    border-color: var(--accent-teal);
+    background-color: var(--bg-card-hover);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.08);
+}
+
+.select-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.species-select:focus + .select-icon {
+    transform: translateY(-50%) rotate(180deg);
+    color: var(--accent-teal);
+}
+
+.wikipedia-backlink-note {
+    max-width: 450px;
+    border-left: 3px solid var(--accent-teal);
+    padding-left: 16px;
+    margin-top: 40px;
+}
+
+.wikipedia-backlink-note p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Explorer Detail Card */
+.explorer-card-container {
+    position: relative;
+}
+
+.species-card {
+    background-color: #101316;
+    border: 1px solid var(--border-glass);
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: var(--transition-smooth);
+}
+
+.card-bg-glow {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-teal-glow) 0%, rgba(0,229,255,0) 70%);
+    z-index: 0;
+    transition: var(--transition-smooth);
+}
+
+.card-inner {
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+}
+
+.species-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.species-header h3 {
+    font-size: 1.8rem;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.species-header h4 {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--accent-teal);
+    transition: var(--transition-smooth);
+}
+
+.status-indicator {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.status-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.status-value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.status-lc {
+    background-color: rgba(16, 185, 129, 0.12);
+    color: var(--accent-green);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-en {
+    background-color: rgba(239, 68, 68, 0.12);
+    color: var(--accent-red);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Species Schematic Graphic */
+.species-image-placeholder {
+    height: 240px;
+    background-color: rgba(9, 11, 12, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.lizard-avatar {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: var(--transition-smooth);
+}
+
+.species-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-box {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 15px 20px;
+    border-radius: 14px;
+}
+
+.stat-title {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.stat-detail {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.species-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    min-height: 80px; /* Keep page stable when text changes */
+}
+
+
+/* 7. Fun Facts Section */
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.fact-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+}
+
+.fact-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-glass-hover);
+    background-color: var(--bg-card-hover);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.fact-icon {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.fact-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.fact-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+
+/* 8. Conservation Section */
+.conservation-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.section-tag {
+    font-family: var(--font-heading);
+    color: var(--accent-amber);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+.conservation-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, var(--text-primary) 30%, #ffedd5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.conservation-content p {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.conservation-stats-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 30px;
+}
+
+.c-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-amber);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.c-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    max-width: 150px;
+}
+
+/* Tips Card Graphic */
+.graphic-card {
+    background: linear-gradient(145deg, #161a1f 0%, #0d0f11 100%);
+    border: 1px solid rgba(255, 159, 28, 0.15);
+    border-radius: 28px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.graphic-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.graphic-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.conservation-tips {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.conservation-tips li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.conservation-tips li strong {
+    color: var(--accent-amber);
+    display: block;
+    margin-bottom: 4px;
+}
+
+
+/* 9. Footer Styles */
+.site-footer {
+    background-color: #050607;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 80px 0 30px 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.footer-brand .logo {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    font-size: 0.9rem;
+    max-width: 320px;
+}
+
+.site-footer h4 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+}
+
+.site-footer ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.site-footer ul a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition-smooth);
+}
+
+.site-footer ul a:hover {
+    color: var(--accent-teal);
+    padding-left: 4px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 30px;
+}
+
+.footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+
+/* 10. Scroll-driven Reveal System */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 10. Links Section Styles */
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.links-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.links-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-glass-hover);
+    background-color: var(--bg-card-hover);
+}
+
+.links-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.links-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.link-btn-url {
+    color: var(--accent-teal);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition-smooth);
+}
+
+.link-btn-url:hover {
+    color: var(--text-primary);
+}
+
+.wiki-links-subgrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.link-chip {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    transition: var(--transition-smooth);
+}
+
+.link-chip:hover {
+    background-color: rgba(0, 229, 255, 0.08);
+    border-color: var(--accent-teal);
+    color: var(--text-primary);
+}
+
+/* 11. Responsive Design media queries */
+@media (max-width: 1024px) {
+    .islands-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .grid-explorer {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .facts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .conservation-layout {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* In a full app we'd build a burger menu, but static header keeps links optional or scrolls nicely */
+    }
+    
+    .site-header .btn {
+        display: none;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    
+    .facts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .links-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .footer-bottom-inner {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}

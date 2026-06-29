@@ -1,0 +1,20 @@
+# GalaTrixa - Netlify Configuration
+
+[build]
+  publish = "."
+
+# Performance Optimizations (Caching Headers for Core Web Vitals & LCP)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
+[[headers]]
+  for = "/app.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
