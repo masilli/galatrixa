@@ -274,6 +274,7 @@ em {
 
 .logo-img {
     max-height: 64px;
+    height: 64px;
     width: auto;
     object-fit: contain;
 }
