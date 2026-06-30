@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Direct crawlers to the sitemap
-Sitemap: https://galatrixa.org/sitemap.xml
+Sitemap: https://galatrixa.com/sitemap.xml
