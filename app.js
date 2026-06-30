@@ -154,6 +154,36 @@ const speciesData = {
             pt: "Endémico da Madeira, mas introduzido acidentalmente nos Açores, onde se naturalizou. Atinge densidades populacionais elevadíssimas, escalando por vezes árvores ou videiras para comer fruta. Nos Açores, a sua dieta generalista ameaça as aves marinhas."
         }
     },
+    tarentola_bischoffi: {
+        commonName: {
+            en: "Savage Islands Gecko",
+            pt: "Osga-das-Selvagens"
+        },
+        scientificName: "Tarentola bischoffi",
+        range: {
+            en: "Selvagens Islands (Madeira, Portugal)",
+            pt: "Ilhas Selvagens (Madeira, Portugal)"
+        },
+        size: "7 - 9 cm",
+        diet: {
+            en: "Insectivorous (beetles, ants, moths)",
+            pt: "Insetívoro (escaravelhos, formigas, traças)"
+        },
+        status: {
+            en: "Least Concern",
+            pt: "Pouco Preocupante"
+        },
+        statusClass: "status-lc",
+        badgeClass: "badge-madeira",
+        accentColor: "#4f46e5", // Deep Indigo
+        accentGlow: "rgba(79, 70, 229, 0.15)",
+        wikiUrl: "https://en.wikipedia.org/wiki/Tarentola_bischoffi",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Tarentola_bischoffi.JPG",
+        description: {
+            en: "Endemic to the tiny, hyper-arid Selvagens archipelago. It is a highly resilient gecko that shelters in rocky crevices and stone walls built by lighthouse keepers. They thrive by feeding on small insects attracted to nesting seabird colonies.",
+            pt: "Endémica do pequeno e hiperárido arquipélago das Selvagens. É uma osga muito resiliente que se abriga em fendas rochosas e muros de pedra. Prosperam alimentando-se de pequenos insetos atraídos pelas colónias de aves."
+        }
+    },
     tarentola_gigas: {
         commonName: {
             en: "Cape Verde Giant Gecko",
