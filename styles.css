@@ -480,7 +480,7 @@ em {
 /* 5. Biogeography Section */
 .islands-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
@@ -826,7 +826,7 @@ em {
 /* 7. Fun Facts Section */
 .facts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
 }
 
@@ -1239,13 +1239,7 @@ em {
     margin-bottom: 0;
 }
 
-/* 12. Responsive Design media queries */
 @media (max-width: 1024px) {
-    .islands-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-    
     .grid-explorer {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -1301,6 +1295,11 @@ em {
     
     .facts-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .islands-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
     
     .links-grid {
