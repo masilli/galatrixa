@@ -1,6 +1,7 @@
-/* ==========================================================================
-   GalaTrixa Landing Page Logic
-   ========================================================================== */
+// Immediate Theme Initialization (prevents dark flash on load)
+if (localStorage.getItem("theme") === "light") {
+    document.documentElement.classList.add("light-theme");
+}
 
 // 1. Bilingual Species Database
 const speciesData = {
@@ -273,11 +274,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentLang === "pt") {
             btnPt.classList.add("active");
             btnEn.classList.remove("active");
-            document.body.className = "lang-pt";
+            document.body.classList.add("lang-pt");
+            document.body.classList.remove("lang-en");
         } else {
             btnEn.classList.add("active");
             btnPt.classList.remove("active");
-            document.body.className = "lang-en";
+            document.body.classList.add("lang-en");
+            document.body.classList.remove("lang-pt");
         }
     };
 
@@ -301,8 +304,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cardStatus.textContent = data.status[currentLang] || data.status;
             cardStatus.className = `status-value ${data.statusClass}`;
             
-            cardAvatar.innerHTML = "";
-            cardAvatar.style.backgroundImage = `url('${data.image}')`;
+            cardAvatar.src = data.image;
+            cardAvatar.alt = data.commonName[currentLang] || data.commonName;
             
             cardSize.textContent = data.size;
             cardDiet.textContent = data.diet[currentLang] || data.diet;
@@ -374,10 +377,45 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
             header.style.padding = "5px 0";
-            header.style.backgroundColor = "rgba(9, 11, 12, 0.9)";
+            header.style.backgroundColor = "var(--bg-header-scroll)";
         } else {
             header.style.padding = "0";
-            header.style.backgroundColor = "rgba(9, 11, 12, 0.75)";
+            header.style.backgroundColor = "var(--bg-header)";
         }
     });
+
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const sunIcon = themeToggleBtn.querySelector(".sun-icon");
+    const moonIcon = themeToggleBtn.querySelector(".moon-icon");
+    
+    // Set initial toggle button states based on root class list
+    if (document.documentElement.classList.contains("light-theme")) {
+        sunIcon.style.display = "none";
+        moonIcon.style.display = "block";
+    }
+    
+    themeToggleBtn.addEventListener("click", () => {
+        const isLight = document.documentElement.classList.toggle("light-theme");
+        if (isLight) {
+            localStorage.setItem("theme", "light");
+            sunIcon.style.display = "none";
+            moonIcon.style.display = "block";
+        } else {
+            localStorage.setItem("theme", "dark");
+            sunIcon.style.display = "block";
+            moonIcon.style.display = "none";
+        }
+    });
+
+    // Hero Background Slideshow
+    const slides = document.querySelectorAll(".hero-slide");
+    let currentSlideIndex = 0;
+    if (slides.length > 0) {
+        setInterval(() => {
+            slides[currentSlideIndex].classList.remove("active");
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            slides[currentSlideIndex].classList.add("active");
+        }, 6000); // Transition every 6 seconds
+    }
 });

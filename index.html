@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css?v=1.0.9">
+    <link rel="stylesheet" href="styles.css?v=1.0.10">
 
     <!-- Schema.org JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
@@ -117,6 +117,26 @@
             </nav>
             
             <div style="display: flex; align-items: center;">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <!-- Sun Icon (for toggling to light mode) -->
+                    <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon Icon (for toggling to dark mode) -->
+                    <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                
                 <!-- Sleek Language Switcher -->
                 <div class="lang-switcher">
                     <button id="lang-btn-en" class="lang-btn active" aria-label="Switch to English">EN</button>
@@ -136,6 +156,11 @@
         
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
+            <div class="hero-slideshow">
+                <div class="hero-slide active" style="background-image: url('assets/gallotia_hero_bg.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('https://commons.wikimedia.org/wiki/Special:FilePath/Madeira-Ponta_de_Sao_Lourenco-14-2000-gje.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('https://commons.wikimedia.org/wiki/Special:FilePath/Lagoa_das_Sete_Cidades_S%C3%A3o_Miguel_A%C3%A7ores.jpg');"></div>
+            </div>
             <div class="hero-background-overlay"></div>
             <div class="hero-content">
                 <div class="tagline">
@@ -386,7 +411,7 @@
                                 
                                 <div class="species-image-placeholder">
                                     <!-- A container showing the species photo as cover background -->
-                                    <div class="lizard-avatar" id="lizard-avatar" style="background-image: url('https://commons.wikimedia.org/wiki/Special:FilePath/Gallotia_galloti_LC0211.jpg');"></div>
+                                    <img class="lizard-avatar" id="lizard-avatar" src="https://commons.wikimedia.org/wiki/Special:FilePath/Gallotia_galloti_LC0211.jpg" alt="Tenerife Lizard" loading="lazy">
                                 </div>
 
                                 <div class="species-stats">
@@ -929,6 +954,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="app.js?v=1.0.4"></script>
+    <script src="app.js?v=1.0.5"></script>
 </body>
 </html>

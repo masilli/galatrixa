@@ -14,6 +14,12 @@
     --text-secondary: #94a3b8;
     --text-muted: #64748b;
     
+    --bg-header: rgba(9, 11, 12, 0.75);
+    --bg-header-scroll: rgba(9, 11, 12, 0.95);
+    --bg-footer: #050607;
+    --border-footer: rgba(255, 255, 255, 0.03);
+    --bg-switcher: rgba(255, 255, 255, 0.04);
+    
     /* Brand Accents */
     --accent-teal: #00e5ff;
     --accent-teal-glow: rgba(0, 229, 255, 0.15);
@@ -29,6 +35,24 @@
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.light-theme {
+    --bg-dark: #f8fafc; /* Light Slate-50 */
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-card-hover: rgba(255, 255, 255, 0.98);
+    --border-glass: rgba(15, 23, 42, 0.08);
+    --border-glass-hover: rgba(15, 23, 42, 0.15);
+    
+    --text-primary: #0f172a; /* Dark Slate-900 */
+    --text-secondary: #475569; /* Slate-600 */
+    --text-muted: #64748b; /* Slate-500 */
+    
+    --bg-header: rgba(248, 250, 252, 0.85);
+    --bg-header-scroll: rgba(248, 250, 252, 0.96);
+    --bg-footer: #f1f5f9; /* Slate-100 */
+    --border-footer: rgba(15, 23, 42, 0.05);
+    --bg-switcher: rgba(15, 23, 42, 0.04);
+}
+
 /* 2. Language Toggle System */
 body.lang-en [lang="pt"] {
     display: none !important;
@@ -40,7 +64,7 @@ body.lang-pt [lang="en"] {
 /* Lang Switcher Component */
 .lang-switcher {
     display: flex;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--bg-switcher);
     border: 1px solid var(--border-glass);
     border-radius: 30px;
     padding: 2px;
@@ -70,6 +94,37 @@ body.lang-pt [lang="en"] {
     box-shadow: 0 2px 10px var(--accent-teal-glow);
 }
 
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    background: none;
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.theme-toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--border-glass-hover);
+    transform: scale(1.05);
+}
+
+body.light-theme .theme-toggle-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.theme-toggle-btn svg {
+    stroke: var(--text-primary);
+    transition: var(--transition-smooth);
+}
+
 /* 3. Reset & Global Styles */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -89,6 +144,21 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth theme transitions */
+body, .site-header, section, .island-card, .fact-card, .links-card, .faq-item, .species-card, .species-select, .lang-switcher, .theme-toggle-btn {
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+}
+.light-theme ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+.light-theme ::-webkit-scrollbar-track {
+    background: var(--bg-dark);
 }
 
 /* Custom Scrollbar */
@@ -249,7 +319,7 @@ em {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(9, 11, 12, 0.75);
+    background-color: var(--bg-header);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-glass);
@@ -365,10 +435,34 @@ em {
     align-items: center;
     justify-content: center;
     padding: 120px 0 80px 0;
-    background-image: url('assets/gallotia_hero_bg.jpg');
+    overflow: hidden;
+    z-index: 0;
+}
+
+.hero-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
 }
 
 .hero-background-overlay {
@@ -383,6 +477,22 @@ em {
         var(--bg-dark) 100%
     );
     z-index: 1;
+}
+
+.light-theme .hero-background-overlay {
+    background: linear-gradient(to bottom, 
+        rgba(248, 250, 252, 0.3) 0%, 
+        rgba(248, 250, 252, 0.7) 60%,
+        var(--bg-dark) 100%
+    );
+}
+
+.light-theme .hero-title {
+    color: #0f172a;
+}
+
+.light-theme .hero-subtitle {
+    color: #334155;
 }
 
 .hero-content {
@@ -780,8 +890,8 @@ em {
 .lizard-avatar {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
+    object-fit: cover;
+    object-position: center;
     transition: var(--transition-smooth);
 }
 
@@ -967,8 +1077,8 @@ em {
 
 /* 9. Footer Styles */
 .site-footer {
-    background-color: #050607;
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    background-color: var(--bg-footer);
+    border-top: 1px solid var(--border-footer);
     padding: 80px 0 30px 0;
 }
 
