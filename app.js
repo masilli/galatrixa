@@ -178,7 +178,7 @@ const speciesData = {
         accentColor: "#eab308", // Gold
         accentGlow: "rgba(234, 179, 8, 0.15)",
         wikiUrl: "https://en.wikipedia.org/wiki/Tarentola_gigas",
-        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Tarentola_gigas_Branco.jpg",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Tarentola_gigas_brancoensis_10797347.jpg",
         description: {
             en: "An impressive, heavy-bodied gecko that lives exclusively on the dry, uninhabited islets of Branco and Raso. Highly nocturnal, it has adapted to feed on the abundant insect life and eggs inside marine bird nesting colonies.",
             pt: "Uma osga impressionante e encorpada que vive exclusivamente nos ilhéus áridos e desabitados Branco e Raso. Altamente noturna, adaptou-se para se alimentar de insetos e ovos nas colónias de aves marinhas."
@@ -208,7 +208,7 @@ const speciesData = {
         accentColor: "#64748b", // Slate Grey
         accentGlow: "rgba(100, 116, 139, 0.15)",
         wikiUrl: "https://en.wikipedia.org/wiki/Macroscincus",
-        image: "https://commons.wikimedia.org/wiki/Special:FilePath/MacroscincusCocteiCastelnau.jpg",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Chioninia_coctei.jpg",
         description: {
             en: "This large, herbivorous skink was endemic to the desert islets of Cape Verde. It went extinct in the early 20th century due to human introduction of cats, dogs, and rats, combined with severe island droughts. It remains a symbolic warning for island biogeography conservation.",
             pt: "Este grande sardão herbívoro era endémico dos ilhéus desérticos de Cabo Verde. Extinguiu-se no início do século XX devido à introdução de cães, gatos e ratos, combinada com secas severas. Permanece como um símbolo de alerta para a conservação insular."
