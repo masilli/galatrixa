@@ -1,0 +1,6 @@
+# GalaTrixa Robots.txt
+User-agent: *
+Allow: /
+
+# Direct crawlers to the sitemap
+Sitemap: https://galatrixa.org/sitemap.xml

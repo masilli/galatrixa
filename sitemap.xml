@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://galatrixa.org/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <!-- Alternate Language Pointers for Search Crawlers -->
+    <xhtml:link 
+                 rel="alternate"
+                 hreflang="en-gb"
+                 href="https://galatrixa.org/" />
+    <xhtml:link 
+                 rel="alternate"
+                 hreflang="pt-pt"
+                 href="https://galatrixa.org/" />
+  </url>
+</urlset>
