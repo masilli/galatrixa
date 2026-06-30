@@ -751,6 +751,18 @@ em {
     border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
+.status-vu {
+    background-color: rgba(245, 158, 11, 0.12);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.status-ex {
+    background-color: rgba(100, 116, 139, 0.12);
+    color: #94a3b8;
+    border: 1px solid rgba(100, 116, 139, 0.2);
+}
+
 /* Species Schematic Graphic */
 .species-image-placeholder {
     height: 240px;
@@ -814,7 +826,7 @@ em {
 /* 7. Fun Facts Section */
 .facts-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 24px;
 }
 

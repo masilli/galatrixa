@@ -153,6 +153,66 @@ const speciesData = {
             en: "Endemic to Madeira, but accidentally introduced to the Azores where it has naturalized. They have massive population densities, sometimes climbing trees or vine stocks to feed on fruit. In the Azores, their generalist feeding habits threaten nesting seabird populations.",
             pt: "Endémico da Madeira, mas introduzido acidentalmente nos Açores, onde se naturalizou. Atinge densidades populacionais elevadíssimas, escalando por vezes árvores ou videiras para comer fruta. Nos Açores, a sua dieta generalista ameaça as aves marinhas."
         }
+    },
+    tarentola_gigas: {
+        commonName: {
+            en: "Cape Verde Giant Gecko",
+            pt: "Osga-gigante-de-Cabo-Verde"
+        },
+        scientificName: "Tarentola gigas",
+        range: {
+            en: "Branco & Raso Islets (Cape Verde)",
+            pt: "Ilhéus Branco & Raso (Cabo Verde)"
+        },
+        size: "Up to 28 cm",
+        diet: {
+            en: "Omnivorous (seabird eggs, insects, carrion)",
+            pt: "Omnívoro (ovos de aves marinhas, insetos, carcaças)"
+        },
+        status: {
+            en: "Vulnerable",
+            pt: "Vulnerável"
+        },
+        statusClass: "status-vu",
+        badgeClass: "badge-cape-verde",
+        accentColor: "#eab308", // Gold
+        accentGlow: "rgba(234, 179, 8, 0.15)",
+        wikiUrl: "https://en.wikipedia.org/wiki/Tarentola_gigas",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Tarentola_gigas_Branco.jpg",
+        description: {
+            en: "An impressive, heavy-bodied gecko that lives exclusively on the dry, uninhabited islets of Branco and Raso. Highly nocturnal, it has adapted to feed on the abundant insect life and eggs inside marine bird nesting colonies.",
+            pt: "Uma osga impressionante e encorpada que vive exclusivamente nos ilhéus áridos e desabitados Branco e Raso. Altamente noturna, adaptou-se para se alimentar de insetos e ovos nas colónias de aves marinhas."
+        }
+    },
+    chioninia_coctei: {
+        commonName: {
+            en: "Cape Verde Giant Skink",
+            pt: "Sardão-gigante-de-Cabo-Verde"
+        },
+        scientificName: "Chioninia coctei",
+        range: {
+            en: "Branco & Raso Islets (Extinct)",
+            pt: "Ilhéus Branco & Raso (Extinto)"
+        },
+        size: "Up to 32 cm",
+        diet: {
+            en: "Herbivorous (seeds and dry vegetation)",
+            pt: "Herbívoro (sementes e vegetação seca)"
+        },
+        status: {
+            en: "Extinct",
+            pt: "Extinto"
+        },
+        statusClass: "status-ex",
+        badgeClass: "badge-cape-verde",
+        accentColor: "#64748b", // Slate Grey
+        accentGlow: "rgba(100, 116, 139, 0.15)",
+        wikiUrl: "https://en.wikipedia.org/wiki/Macroscincus",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/MacroscincusCocteiCastelnau.jpg",
+        description: {
+            en: "This large, herbivorous skink was endemic to the desert islets of Cape Verde. It went extinct in the early 20th century due to human introduction of cats, dogs, and rats, combined with severe island droughts. It remains a symbolic warning for island biogeography conservation.",
+            pt: "Este grande sardão herbívoro era endémico dos ilhéus desérticos de Cabo Verde. Extinguiu-se no início do século XX devido à introdução de cães, gatos e ratos, combinada com secas severas. Permanece como um símbolo de alerta para a conservação insular."
+        }
     }
 };
 
