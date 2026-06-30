@@ -279,6 +279,18 @@ em {
     object-fit: contain;
 }
 
+.footer-logo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.footer-logo-img {
+    width: 128px;
+    height: auto;
+    object-fit: contain;
+}
+
 .logo-accent {
     color: var(--accent-teal);
 }
