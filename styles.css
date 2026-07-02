@@ -1080,6 +1080,49 @@ em {
     margin-bottom: 4px;
 }
 
+/* 8.5 Cultural Legacy Section */
+.cultural-legacy-section {
+    background-color: rgba(9, 11, 12, 0.2);
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.cultural-legacy-layout {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cultural-legacy-grid {
+    margin-top: 40px;
+}
+
+.cultural-legacy-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.cultural-legacy-text p strong {
+    color: var(--text-primary);
+}
+
+.cultural-disclaimer {
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px dashed var(--border-glass);
+}
+
+.cultural-disclaimer p {
+    font-size: 0.825rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* Light theme support */
+.light-theme .cultural-legacy-section {
+    background-color: rgba(248, 250, 252, 0.4);
+}
+
 
 /* 9. Footer Styles */
 .site-footer {
