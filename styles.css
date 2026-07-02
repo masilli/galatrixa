@@ -1095,7 +1095,7 @@ em {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 60px;
-    align-items: center;
+    align-items: stretch;
     margin-top: 40px;
 }
 
@@ -1134,6 +1134,7 @@ em {
     border: 1px solid var(--border-glass);
     box-shadow: 0 15px 35px rgba(0,0,0,0.25);
     transition: var(--transition-smooth);
+    height: 100%;
 }
 
 .cultural-legacy-image-wrapper:hover {
@@ -1144,9 +1145,10 @@ em {
 
 .cultural-legacy-image {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
+    object-position: center;
 }
 
 .light-theme .cultural-legacy-image-wrapper {
@@ -1473,6 +1475,10 @@ body.light-theme .inline-link:hover {
     .cultural-legacy-grid {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+    
+    .cultural-legacy-image-wrapper {
+        height: 350px;
     }
     
     .hero-title {
