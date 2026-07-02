@@ -1123,6 +1123,24 @@ em {
     background-color: rgba(248, 250, 252, 0.4);
 }
 
+.inline-link {
+    color: var(--accent-teal);
+    text-decoration: underline;
+    transition: var(--transition-smooth);
+}
+
+.inline-link:hover {
+    color: var(--text-primary);
+}
+
+body.light-theme .inline-link {
+    color: #0369a1;
+}
+
+body.light-theme .inline-link:hover {
+    color: #0c4a6e;
+}
+
 
 /* 9. Footer Styles */
 .site-footer {
