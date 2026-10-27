@@ -441,20 +441,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     ];
 
-    // Map filter keys or species keys to iNaturalist taxon names
-    const filterToTaxaMap = {
-        all: ["Teira dugesii", "Gallotia galloti", "Gallotia stehlini", "Gallotia atlantica", "Gallotia simonyi", "Tarentola bischoffi", "Tarentola gigas"],
-        teira_dugesii: ["Teira dugesii"],
-        gallotia: ["Gallotia galloti", "Gallotia stehlini", "Gallotia atlantica", "Gallotia simonyi"],
-        tarentola: ["Tarentola bischoffi", "Tarentola gigas"],
-        gallotia_galloti: ["Gallotia galloti"],
-        gallotia_stehlini: ["Gallotia stehlini"],
-        gallotia_simonyi: ["Gallotia simonyi"],
-        gallotia_atlantica: ["Gallotia atlantica"],
-        tarentola_bischoffi: ["Tarentola bischoffi"],
-        tarentola_gigas: ["Tarentola gigas"],
-        chioninia_coctei: ["Teira dugesii", "Tarentola gigas"] // Chioninia coctei is extinct in the wild, show Macaronesian relatives
+    // Map filter keys or species keys to exact iNaturalist numeric taxon_id lists
+    const filterToTaxonIdsMap = {
+        all: "36023,35906,35901,35902,35908,33997,113696",
+        teira_dugesii: "36023",
+        gallotia: "35906,35901,35902,35908",
+        tarentola: "33997,113696",
+        gallotia_galloti: "35906",
+        gallotia_stehlini: "35901",
+        gallotia_simonyi: "35902",
+        gallotia_atlantica: "35908",
+        tarentola_bischoffi: "33997",
+        tarentola_gigas: "113696",
+        chioninia_coctei: "36023,113696" // Chioninia coctei is extinct in the wild, show Macaronesian relatives
     };
+
+    const allowedGenera = ["teira", "gallotia", "tarentola", "chioninia", "lacerta"];
 
     const resolveSpeciesMeta = (scientificName = "") => {
         const lower = scientificName.toLowerCase();
@@ -638,35 +640,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            const taxaList = filterToTaxaMap[filterKey] || filterToTaxaMap.all;
-            const taxonNameParam = encodeURIComponent(taxaList[0]);
-            // If "all" or multi-species group, query multiple or primary genus/species
-            let queryUrl = `https://api.inaturalist.org/v1/observations?quality_grade=research&photos=true&photo_license=cc0,cc-by,cc-by-nc,cc-by-sa,cc-by-nc-sa&per_page=6&page=${page}&order_by=observed_on&order=desc`;
-
-            if (filterKey === "all") {
-                // Mix verified observations across Teira dugesii and Gallotia
-                queryUrl += `&taxon_name=${encodeURIComponent(page % 2 === 1 ? "Teira dugesii" : "Gallotia")}`;
-            } else if (filterKey === "gallotia") {
-                queryUrl += `&taxon_name=Gallotia`;
-            } else if (filterKey === "tarentola") {
-                queryUrl += `&taxon_name=${encodeURIComponent("Tarentola bischoffi")}`;
-            } else {
-                queryUrl += `&taxon_name=${taxonNameParam}`;
-            }
+            const taxonIds = filterToTaxonIdsMap[filterKey] || filterToTaxonIdsMap.all;
+            const queryUrl = `https://api.inaturalist.org/v1/observations?taxon_id=${taxonIds}&iconic_taxa=Reptilia&quality_grade=research&photos=true&photo_license=cc0,cc-by,cc-by-nc,cc-by-sa,cc-by-nc-sa&per_page=12&page=${page}&order_by=observed_on&order=desc`;
 
             const response = await fetch(queryUrl);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const json = await response.json();
 
-            const results = (json.results || []).filter(obs => obs.photos && obs.photos.length > 0);
-            if (results.length === 0) throw new Error("No observations returned");
+            const results = (json.results || []).filter((obs) => {
+                if (!obs.photos || obs.photos.length === 0 || !obs.taxon || !obs.taxon.name) return false;
+                if (obs.taxon.iconic_taxon_name && obs.taxon.iconic_taxon_name !== "Reptilia") return false;
+                const lowerName = obs.taxon.name.toLowerCase();
+                return allowedGenera.some((genus) => lowerName.startsWith(genus));
+            });
+            if (results.length === 0) throw new Error("No verified reptile observations returned");
 
             const normalized = results.slice(0, 6).map((obs) => {
                 const photo = obs.photos[0];
                 const rawUrl = photo.url || "";
                 const mediumUrl = rawUrl.replace("square", "medium");
                 const largeUrl = rawUrl.replace("square", "large");
-                const sciName = (obs.taxon && obs.taxon.name) ? obs.taxon.name : taxaList[0];
+                const sciName = obs.taxon.name;
                 const meta = resolveSpeciesMeta(sciName);
                 const observerName = (obs.user && (obs.user.name || obs.user.login)) ? (obs.user.name || `@${obs.user.login}`) : "iNaturalist Observer";
                 const rawLicense = (photo.license_code || obs.license_code || "CC BY-NC").toUpperCase().replace(/-/g, " ");
