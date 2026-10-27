@@ -91,12 +91,13 @@
 }
 
 /* 2. Language Toggle System */
-html:not([lang="pt"]) [lang="pt"],
-body.lang-en [lang="pt"] {
-    display: none !important;
-}
+html:not([lang="en"]) [lang="en"],
 html[lang="pt"] [lang="en"],
 body.lang-pt [lang="en"] {
+    display: none !important;
+}
+html:not([lang="pt"]) [lang="pt"],
+body.lang-en [lang="pt"] {
     display: none !important;
 }
 
@@ -802,8 +803,15 @@ em {
     transition: transform 0.2s ease;
 }
 
-.btn:hover .external-glyph {
+.btn:hover .external-glyph,
+.link-btn-url:hover .external-glyph {
     transform: translate(2px, -2px);
+}
+
+.link-chip::after {
+    content: " \2197";
+    font-size: 0.85em;
+    opacity: 0.75;
 }
 
 /* Scroll Indicator */
