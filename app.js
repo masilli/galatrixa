@@ -346,13 +346,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const syncResetBtn = document.getElementById("gallery-sync-reset");
     const lightbox = document.getElementById("gallery-lightbox");
     const inquiryModal = document.getElementById("inquiry-modal");
-    const openInquiryBtn = document.getElementById("open-inquiry-btn");
+    const inquiryTriggers = [
+        document.getElementById("open-inquiry-btn"),
+        document.getElementById("header-inquiry-btn"),
+        document.getElementById("footer-utility-inquiry-btn")
+    ];
 
-    if (openInquiryBtn && inquiryModal) {
-        openInquiryBtn.addEventListener("click", () => {
-            inquiryModal.showModal();
-        });
-    }
+    inquiryTriggers.forEach((btn) => {
+        if (btn && inquiryModal) {
+            btn.addEventListener("click", () => {
+                inquiryModal.showModal();
+            });
+        }
+    });
 
     // Fallback for browsers without <dialog closedby="any"> support
     if (!("closedBy" in HTMLDialogElement.prototype)) {
@@ -847,15 +853,49 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Mobile Hamburger Menu Logic
+    // Mobile Hamburger Menu & Consolidated Resources Dropdown Logic
     const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
     const navLinks = document.getElementById("nav-links");
+    const resourcesDropdown = document.getElementById("nav-resources-dropdown");
+    const resourcesToggle = document.getElementById("nav-resources-toggle");
+
+    const closeResourcesDropdown = () => {
+        if (!resourcesDropdown || !resourcesToggle) return;
+        resourcesDropdown.classList.remove("is-open");
+        resourcesToggle.setAttribute("aria-expanded", "false");
+    };
+
+    if (resourcesDropdown && resourcesToggle) {
+        resourcesToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = resourcesDropdown.classList.toggle("is-open");
+            resourcesToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        resourcesDropdown.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", closeResourcesDropdown);
+        });
+
+        document.addEventListener("click", (e) => {
+            if (resourcesDropdown.classList.contains("is-open") && !resourcesDropdown.contains(e.target)) {
+                closeResourcesDropdown();
+            }
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && resourcesDropdown.classList.contains("is-open")) {
+                closeResourcesDropdown();
+                resourcesToggle.focus();
+            }
+        });
+    }
 
     const closeMobileMenu = () => {
         if (!mobileMenuToggle || !navLinks) return;
         mobileMenuToggle.classList.remove("is-open");
         navLinks.classList.remove("is-open");
         mobileMenuToggle.setAttribute("aria-expanded", "false");
+        closeResourcesDropdown();
     };
 
     if (mobileMenuToggle && navLinks) {

@@ -45,13 +45,36 @@
     <link rel="icon" type="image/png" href="https://galatrixa.com/assets/galatrixa-favico.png">
     <link rel="author" href="humans.txt">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Zero-FOUC Language & Theme Initialization + Critical Language Suppression CSS -->
+    <script>
+      (function() {
+        try {
+          if (localStorage.getItem("theme") === "light") {
+            document.documentElement.classList.add("light-theme");
+          }
+          var params = new URLSearchParams(window.location.search);
+          var urlLang = (params.get("lang") || "").toLowerCase();
+          var activeLang = (urlLang === "pt" || urlLang === "en")
+            ? urlLang
+            : (localStorage.getItem("galatrixa-lang") || "en");
+          document.documentElement.lang = activeLang;
+        } catch (e) {
+          document.documentElement.lang = "en";
+        }
+      })();
+    </script>
+    <style>
+      html:not([lang="pt"]) [lang="pt"] { display: none !important; }
+      html[lang="pt"] [lang="en"] { display: none !important; }
+    </style>
+
+    <!-- LCP Hero Image & Self-Hosted Font Preloads -->
+    <link rel="preload" as="image" href="assets/gallotia_hero_bg.jpg" fetchpriority="high">
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/outfit-latin.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin.woff2" crossorigin>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css?v=1.0.29">
+    <link rel="stylesheet" href="styles.css?v=1.0.30">
 
     <!-- Website Structured Data Schema -->
     <script type="application/ld+json">
@@ -148,28 +171,52 @@
                 </a>
                 <a href="#explorer">
                     <span lang="en">Species Explorer</span>
-                    <span lang="pt">Explorador de Espécies</span>
+                    <span lang="pt">Explorador</span>
                 </a>
                 <a href="#gallery">
-                    <span lang="en">Gallery</span>
+                    <span lang="en">Wild Gallery</span>
                     <span lang="pt">Galeria</span>
                 </a>
-                <a href="#fun-facts">
-                    <span lang="en">Fun Facts</span>
-                    <span lang="pt">Curiosidades</span>
+                <a href="#trails">
+                    <span lang="en">Trails</span>
+                    <span lang="pt">Trilhos</span>
                 </a>
-                <a href="#conservation">
-                    <span lang="en">Conservation</span>
-                    <span lang="pt">Conservação</span>
-                </a>
-                <a href="#links">
-                    <span lang="en">Links</span>
-                    <span lang="pt">Ligações</span>
-                </a>
-                <a href="#faq">
-                    <span lang="en">FAQ</span>
-                    <span lang="pt">FAQ</span>
-                </a>
+
+                <!-- Consolidated Secondary Destinations Dropdown -->
+                <div class="nav-dropdown" id="nav-resources-dropdown">
+                    <button type="button" id="nav-resources-toggle" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="nav-resources-menu">
+                        <span lang="en">Resources</span>
+                        <span lang="pt">Recursos</span>
+                        <span class="dropdown-chevron" aria-hidden="true">&#9662;</span>
+                    </button>
+                    <div id="nav-resources-menu" class="nav-dropdown-menu" role="menu">
+                        <a href="#conservation" role="menuitem">
+                            <span lang="en">Conservation</span>
+                            <span lang="pt">Conservação</span>
+                        </a>
+                        <a href="#coexistence" role="menuitem">
+                            <span lang="en">Coexistence &amp; History</span>
+                            <span lang="pt">Coexistência e História</span>
+                        </a>
+                        <a href="#cultural-legacy" role="menuitem">
+                            <span lang="en">Vineyards &amp; Terroir</span>
+                            <span lang="pt">Vinhas e Terroir</span>
+                        </a>
+                        <a href="#fun-facts" role="menuitem">
+                            <span lang="en">Fun Facts</span>
+                            <span lang="pt">Curiosidades</span>
+                        </a>
+                        <a href="#links" role="menuitem">
+                            <span lang="en">Quick Links</span>
+                            <span lang="pt">Ligações Úteis</span>
+                        </a>
+                        <a href="#faq" role="menuitem">
+                            <span lang="en">FAQ</span>
+                            <span lang="pt">FAQ</span>
+                        </a>
+                    </div>
+                </div>
+
                 <a href="#explorer" class="nav-cta mobile-menu-cta">
                     <span lang="en">Explore Species</span>
                     <span lang="pt">Explorar Espécies</span>
@@ -177,6 +224,12 @@
             </nav>
             
             <div class="nav-controls" style="display: flex; align-items: center;">
+                <!-- Discreet Domain & Partnerships Utility Chip -->
+                <button type="button" id="header-inquiry-btn" class="nav-partner-chip" aria-label="Domain and Partnership Inquiries">
+                    <span lang="en">Partnerships</span>
+                    <span lang="pt">Parcerias</span>
+                </button>
+
                 <!-- Theme Toggle Button -->
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
                     <!-- Sun Icon (for toggling to light mode) -->
@@ -224,32 +277,34 @@
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
             <div class="hero-slideshow">
-                <div class="hero-slide active" style="background-image: url('assets/gallotia_hero_bg.jpg');"></div>
+                <div class="hero-slide active">
+                    <img class="hero-lcp-img" src="assets/gallotia_hero_bg.jpg" alt="Gallotia lizard basking on volcanic rocks in Macaronesia" fetchpriority="high" loading="eager" width="1920" height="1080">
+                </div>
                 <div class="hero-slide" style="background-image: url('assets/madeira_sao_lourenco.webp');"></div>
                 <div class="hero-slide" style="background-image: url('assets/azores_sete_cidades.webp');"></div>
             </div>
             <div class="hero-background-overlay"></div>
             <div class="hero-content">
                 <div class="tagline">
-                    <span lang="en">Vanguards of the Volcanic Isles</span>
-                    <span lang="pt">Vanguardas das Ilhas Vulcânicas</span>
+                    <span lang="en">The Living Natural Heritage of Macaronesia</span>
+                    <span lang="pt">O Património Natural Vivo da Macaronésia</span>
                 </div>
                 <h1 class="hero-title">
                     <span lang="en">Lizards of Macaronesia</span>
                     <span lang="pt">Lagartos da Macaronésia</span>
                 </h1>
                 <p class="hero-subtitle">
-                    <span lang="en">Exploring the unique evolutionary journeys of the endemic <em>Gallotia</em> and <em>Teira</em> lizards across the Azores, Madeira, and Canary archipelagos.</span>
-                    <span lang="pt">Explorando as viagens evolutivas únicas dos lagartos endémicos <em>Gallotia</em> e <em>Teira</em> pelos arquipélagos dos Açores, Madeira e Canárias.</span>
+                    <span lang="en">An Interactive Field Guide to the Endemic Lizards of Madeira, Canaries, Azores, and Cape Verde.</span>
+                    <span lang="pt">Um Guia de Campo Interativo dos Lagartos Endémicos da Madeira, Canárias, Açores e Cabo Verde.</span>
                 </p>
                 <div class="hero-actions">
-                    <a href="#explorer" class="btn btn-primary">
-                        <span lang="en">Start Exploring</span>
-                        <span lang="pt">Começar a Explorar</span>
+                    <a href="#explorer" class="btn btn-primary hero-primary-cta">
+                        <span lang="en">Explore Species</span>
+                        <span lang="pt">Explorar Espécies</span>
                     </a>
-                    <a href="#biogeography" class="btn btn-secondary">
-                        <span lang="en">Learn About the Islands</span>
-                        <span lang="pt">Saber Mais Sobre as Ilhas</span>
+                    <a href="#gallery" class="btn-ghost-link">
+                        <span lang="en">Browse Wild Sightings &darr;</span>
+                        <span lang="pt">Ver Avistamentos na Natureza &darr;</span>
                     </a>
                 </div>
             </div>
@@ -519,11 +574,7 @@
                                     <a id="species-wiki-link" href="https://en.wikipedia.org/wiki/Gallotia_galloti" target="_blank" rel="noopener" class="btn btn-primary btn-block">
                                         <span lang="en">View on Wikipedia</span>
                                         <span lang="pt">Ver na Wikipédia</span>
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18 13V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V8C3 7.46957 3.21071 6.96086 3.58579 6.58579C3.96086 6.21071 4.46957 6 5 6H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M15 3H21V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
+                                        <span class="external-glyph" aria-hidden="true">&#8599;</span>
                                     </a>
                                 </div>
                             </div>
@@ -595,8 +646,9 @@
                             <span lang="pt">Carregar Mais Avistamentos</span>
                         </button>
                         <a href="https://www.inaturalist.org/observations/upload" target="_blank" rel="noopener" class="btn btn-outline-teal">
-                            <span lang="en">Spotted a lizard? Submit on iNaturalist &rarr;</span>
-                            <span lang="pt">Avistou uma lagartixa? Submeta no iNaturalist &rarr;</span>
+                            <span lang="en">Spotted a lizard? Submit on iNaturalist</span>
+                            <span lang="pt">Avistou uma lagartixa? Submeta no iNaturalist</span>
+                            <span class="external-glyph" aria-hidden="true">&#8599;</span>
                         </a>
                     </div>
                     <p class="gallery-legal-note">
@@ -1361,15 +1413,27 @@
         </div>
         <div class="footer-bottom">
             <hr style="border: 0; border-top: 1px solid var(--border-glass); margin: 0 auto 24px auto; width: 90%; max-width: var(--max-width); opacity: 0.5;">
-            <div class="container footer-bottom-inner" style="flex-direction: column; gap: 12px; text-align: center; justify-content: center; align-items: center; width: 100%;">
+            <div class="container footer-bottom-inner" style="flex-direction: column; gap: 14px; text-align: center; justify-content: center; align-items: center; width: 100%;">
+                <!-- Intentional Domain & Institutional Partnership Utility Bar -->
+                <div class="footer-utility-bar">
+                    <span class="footer-utility-text">
+                        <span lang="en">Interested in eco-tourism sponsorships, research collaboration, or acquiring the 20-year <strong>GalaTrixa.com</strong> domain?</span>
+                        <span lang="pt">Interessado em patrocínios de ecoturismo, colaboração científica ou na aquisição do domínio <strong>GalaTrixa.com</strong> (20 anos)?</span>
+                    </span>
+                    <button type="button" id="footer-utility-inquiry-btn" class="footer-utility-cta">
+                        <span lang="en">Domain &amp; Partnership Inquiries &rarr;</span>
+                        <span lang="pt">Parcerias e Aquisição de Domínio &rarr;</span>
+                    </button>
+                </div>
+
                 <p style="margin: 0; font-size: 0.775rem; opacity: 0.85;">
                     &copy; 2026 GalaTrixa. 
                     <span lang="en">Designed for education and ecological awareness. All data sourced from herpetological publications and open archives.</span>
                     <span lang="pt">Concebido para educação e sensibilização ecológica. Todos os dados provêm de publicações herpetológicas e arquivos abertos.</span>
                 </p>
                 <p style="margin: 0; font-size: 0.775rem; max-width: 800px; line-height: 1.5; font-style: italic; opacity: 0.85;">
-                    <span lang="en"><strong>Disclaimer:</strong> This website is purely educational and holds no official commercial affiliation, representation, or sponsorship with <strong>Octávio Freitas Winery</strong>. Any references to commercial brands are made solely as a cultural reference.</span>
-                    <span lang="pt"><strong>Aviso de Isenção:</strong> Este website é puramente educativo e não possui qualquer afiliação comercial oficial, representação ou patrocínio com a <strong>Octávio Freitas Winery</strong>. Qualquer menção a marcas comerciais é feita exclusivamente como referência cultural.</span>
+                    <span lang="en"><strong>Disclaimer:</strong> GalaTrixa.com is an independent educational field guide and holds no official commercial affiliation, representation, or sponsorship with <strong>Octávio Freitas Winery</strong> (producer of the "Galatrixa" wine label). Both names independently celebrate the traditional Madeiran dialect wordplay for the endemic wall lizard (<em>Teira dugesii</em>).</span>
+                    <span lang="pt"><strong>Aviso de Isenção:</strong> O GalaTrixa.com é um guia de campo educativo independente e não possui qualquer afiliação comercial oficial, representação ou patrocínio com a <strong>Octávio Freitas Winery</strong> (produtora do vinho "Galatrixa"). Ambos os nomes celebram de forma independente o regionalismo madeirense para a lagartixa endémica (<em>Teira dugesii</em>).</span>
                 </p>
                 <p style="margin: 0; font-size: 0.75rem; opacity: 0.75;">
                     <span lang="en">Designed & developed by <a href="https://masilli.com" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; font-weight: 700;">masilli</a> in collaboration with Antigravity AI</span>
@@ -1440,11 +1504,7 @@
                     <a id="lightbox-inat-link" href="https://www.inaturalist.org/" target="_blank" rel="noopener" class="btn btn-primary btn-block">
                         <span lang="en">View Observation on iNaturalist.org</span>
                         <span lang="pt">Ver Observação no iNaturalist.org</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 13V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V8C3 7.46957 3.21071 6.96086 3.58579 6.58579C3.96086 6.21071 4.46957 6 5 6H11"></path>
-                            <path d="M15 3H21V9"></path>
-                            <path d="M10 14L21 3"></path>
-                        </svg>
+                        <span class="external-glyph" aria-hidden="true">&#8599;</span>
                     </a>
                 </div>
             </div>
@@ -1508,6 +1568,6 @@
     </dialog>
 
     <!-- JavaScript -->
-    <script src="app.js?v=1.0.10"></script>
+    <script src="app.js?v=1.0.11"></script>
 </body>
 </html>
