@@ -1452,12 +1452,457 @@ body.light-theme .inline-link:hover {
     margin-bottom: 0;
 }
 
+/* 14. Citizen-Science Field Sightings Gallery & Lightbox */
+.gallery-section {
+    background-color: rgba(9, 11, 12, 0.25);
+    border-top: 1px solid var(--border-glass);
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.light-theme .gallery-section {
+    background-color: rgba(241, 245, 249, 0.5);
+}
+
+.gallery-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.gallery-filter-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.gallery-filter-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-glass-hover);
+    transform: translateY(-2px);
+}
+
+.gallery-filter-btn.active {
+    background-color: var(--accent-teal);
+    color: #090b0c;
+    border-color: var(--accent-teal);
+    box-shadow: 0 4px 16px var(--accent-teal-glow);
+}
+
+.gallery-sync-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+.gallery-sync-indicator[hidden] {
+    display: none !important;
+}
+
+.sync-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent-teal);
+    box-shadow: 0 0 8px var(--accent-teal);
+}
+
+.sync-reset-btn {
+    background: none;
+    border: none;
+    color: var(--accent-teal);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+.sync-reset-btn:hover {
+    color: var(--text-primary);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.gallery-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 22px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-align: left;
+    padding: 0;
+    color: inherit;
+    font-family: inherit;
+    position: relative;
+}
+
+.gallery-card:hover,
+.gallery-card:focus-visible {
+    transform: translateY(-6px);
+    border-color: var(--accent-teal);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3), 0 0 20px var(--accent-teal-glow);
+    outline: none;
+}
+
+.light-theme .gallery-card:hover,
+.light-theme .gallery-card:focus-visible {
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08), 0 0 20px var(--accent-teal-glow);
+}
+
+.gallery-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: rgba(15, 23, 42, 0.4);
+}
+
+.gallery-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover .gallery-card-img {
+    transform: scale(1.06);
+}
+
+.gallery-license-pill {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(9, 11, 12, 0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #f1f5f9;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    text-transform: uppercase;
+}
+
+.gallery-species-pill {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background-color: rgba(9, 11, 12, 0.82);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: var(--accent-teal);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.gallery-card-body {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.gallery-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+.gallery-card-location {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.gallery-card-location svg {
+    flex-shrink: 0;
+    color: var(--accent-amber);
+}
+
+.gallery-card-meta {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-glass);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    gap: 8px;
+}
+
+.gallery-card-observer {
+    font-weight: 600;
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Skeleton Loader Cards */
+.gallery-skeleton {
+    height: 330px;
+    border-radius: 22px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+    background-size: 200% 100%;
+    animation: galleryShimmer 1.6s infinite;
+    border: 1px solid var(--border-glass);
+}
+
+.light-theme .gallery-skeleton {
+    background: linear-gradient(90deg, rgba(15,23,42,0.04) 25%, rgba(15,23,42,0.09) 50%, rgba(15,23,42,0.04) 75%);
+    background-size: 200% 100%;
+}
+
+@keyframes galleryShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.gallery-footer {
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.gallery-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-outline-teal {
+    background-color: transparent;
+    border: 1px solid var(--accent-teal);
+    color: var(--accent-teal);
+    padding: 14px 26px;
+    border-radius: 30px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-outline-teal:hover {
+    background-color: var(--accent-teal);
+    color: #090b0c;
+    box-shadow: 0 6px 20px var(--accent-teal-glow);
+}
+
+.light-theme .btn-outline-teal {
+    color: #0369a1;
+    border-color: #0369a1;
+}
+
+.light-theme .btn-outline-teal:hover {
+    background-color: #0369a1;
+    color: #ffffff;
+}
+
+.gallery-legal-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    line-height: 1.5;
+}
+
+/* Native <dialog> Lightbox Modal */
+dialog:modal {
+    overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+    overflow: hidden;
+    overscroll-behavior: contain;
+    background-color: rgba(5, 7, 9, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.gallery-lightbox {
+    margin: auto;
+    width: min(92vw, 760px);
+    max-height: 90vh;
+    background-color: #111519;
+    color: var(--text-primary);
+    border: 1px solid var(--border-glass-hover);
+    border-radius: 26px;
+    padding: 0;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+    overflow-y: auto;
+}
+
+.light-theme .gallery-lightbox {
+    background-color: #ffffff;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
+}
+
+.lightbox-inner {
+    padding: 28px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.lightbox-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.lightbox-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 6px;
+}
+
+.lightbox-scientific {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.lightbox-close-btn {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.light-theme .lightbox-close-btn {
+    background-color: rgba(15, 23, 42, 0.05);
+}
+
+.lightbox-close-btn:hover {
+    border-color: var(--accent-teal);
+    color: var(--accent-teal);
+    transform: rotate(90deg);
+}
+
+.lightbox-image-container {
+    width: 100%;
+    max-height: 460px;
+    border-radius: 18px;
+    overflow: hidden;
+    background-color: #090b0c;
+    border: 1px solid var(--border-glass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-img {
+    width: 100%;
+    max-height: 460px;
+    object-fit: contain;
+    display: block;
+}
+
+.lightbox-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 16px 20px;
+}
+
+.light-theme .lightbox-meta-grid {
+    background-color: rgba(15, 23, 42, 0.03);
+}
+
+.lightbox-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.meta-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.meta-val {
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
 @media (max-width: 1024px) {
     .grid-explorer {
         grid-template-columns: 1fr;
         gap: 40px;
     }
     
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
     .facts-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1516,6 +1961,18 @@ body.light-theme .inline-link:hover {
     }
     
     .facts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lightbox-inner {
+        padding: 20px;
+    }
+
+    .lightbox-meta-grid {
         grid-template-columns: 1fr;
     }
     
