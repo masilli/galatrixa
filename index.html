@@ -48,7 +48,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css?v=1.0.26">
+    <link rel="stylesheet" href="styles.css?v=1.0.27">
 
     <!-- Website Structured Data Schema -->
     <script type="application/ld+json">
@@ -138,7 +138,7 @@
             <a href="#" class="logo">
                 <img src="https://galatrixa.com/assets/galatrixa-logo.png" alt="GalaTrixa logo" class="logo-img">
             </a>
-            <nav class="nav-links">
+            <nav id="nav-links" class="nav-links" aria-label="Primary Navigation">
                 <a href="#biogeography">
                     <span lang="en">Islands</span>
                     <span lang="pt">Ilhas</span>
@@ -167,9 +167,13 @@
                     <span lang="en">FAQ</span>
                     <span lang="pt">FAQ</span>
                 </a>
+                <a href="#explorer" class="nav-cta mobile-menu-cta">
+                    <span lang="en">Explore Species</span>
+                    <span lang="pt">Explorar Espécies</span>
+                </a>
             </nav>
             
-            <div style="display: flex; align-items: center;">
+            <div class="nav-controls" style="display: flex; align-items: center;">
                 <!-- Theme Toggle Button -->
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
                     <!-- Sun Icon (for toggling to light mode) -->
@@ -196,10 +200,17 @@
                     <button id="lang-btn-pt" class="lang-btn" aria-label="Mudar para Português">PT</button>
                 </div>
                 
-                <a href="#explorer" class="nav-cta">
+                <a href="#explorer" class="nav-cta desktop-nav-cta">
                     <span lang="en">Explore</span>
                     <span lang="pt">Explorar</span>
                 </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
             </div>
         </div>
     </header>
@@ -1302,6 +1313,6 @@
     </dialog>
 
     <!-- JavaScript -->
-    <script src="app.js?v=1.0.8"></script>
+    <script src="app.js?v=1.0.9"></script>
 </body>
 </html>

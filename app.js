@@ -818,6 +818,53 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Mobile Hamburger Menu Logic
+    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    const closeMobileMenu = () => {
+        if (!mobileMenuToggle || !navLinks) return;
+        mobileMenuToggle.classList.remove("is-open");
+        navLinks.classList.remove("is-open");
+        mobileMenuToggle.setAttribute("aria-expanded", "false");
+    };
+
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.toggle("is-open");
+            mobileMenuToggle.classList.toggle("is-open", isOpen);
+            mobileMenuToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        // Close when clicking any link inside the menu
+        navLinks.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", closeMobileMenu);
+        });
+
+        // Close when clicking outside the header
+        document.addEventListener("click", (e) => {
+            if (navLinks.classList.contains("is-open") && header && !header.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && navLinks.classList.contains("is-open")) {
+                closeMobileMenu();
+                mobileMenuToggle.focus();
+            }
+        });
+
+        // Close when resizing back to desktop
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 1024 && navLinks.classList.contains("is-open")) {
+                closeMobileMenu();
+            }
+        });
+    }
+
     // Theme Toggle Logic
     const themeToggleBtn = document.getElementById("theme-toggle");
     const sunIcon = themeToggleBtn.querySelector(".sun-icon");
