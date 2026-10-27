@@ -2047,6 +2047,130 @@ dialog::backdrop {
     line-height: 1.35;
 }
 
+/* ==========================================================================
+   Where to Spot Them: Natural Parks & Trails Section
+   ========================================================================== */
+.trails-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 229, 255, 0.025) 50%, transparent 100%);
+}
+
+.trails-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+
+.trail-card {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-radius: 20px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trail-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-teal);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.trail-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.trail-species-tag {
+    font-size: 0.82rem;
+    color: var(--accent-teal);
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+.trail-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin: 2px 0 0;
+}
+
+.trail-card p {
+    font-size: 0.96rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    flex-grow: 1;
+}
+
+.trail-tip {
+    margin-top: 6px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-glass);
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.trail-tip strong {
+    color: var(--accent-amber);
+}
+
+/* ==========================================================================
+   Partnership & Domain Inquiry Footer Trigger + Modal
+   ========================================================================== */
+.footer-inquiry-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.footer-inquiry-link:hover {
+    color: var(--accent-teal);
+}
+
+.inquiry-modal {
+    width: min(92vw, 560px);
+}
+
+.inquiry-inner {
+    padding: 36px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.inquiry-subtitle {
+    font-size: 0.98rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+.inquiry-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.inquiry-actions .btn {
+    flex: 1 1 200px;
+    text-align: center;
+    justify-content: center;
+}
+
 @media (max-width: 1024px) {
     .desktop-nav-cta {
         display: none;
@@ -2225,6 +2349,19 @@ dialog::backdrop {
     .islands-grid {
         grid-template-columns: 1fr;
         gap: 24px;
+    }
+
+    .trails-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .trail-card {
+        padding: 24px 20px;
+    }
+
+    .inquiry-inner {
+        padding: 28px 20px 24px;
     }
     
     .links-grid {

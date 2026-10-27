@@ -266,21 +266,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnEn = document.getElementById("lang-btn-en");
     const btnPt = document.getElementById("lang-btn-pt");
     
-    // Active Language State (read from localstorage or default to en)
-    let currentLang = localStorage.getItem("galatrixa-lang") || "en";
+    // Active Language State (URL ?lang= param takes precedence over localStorage, default to en)
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = (urlParams.get("lang") || "").toLowerCase();
+    let currentLang = (urlLang === "pt" || urlLang === "en")
+        ? urlLang
+        : (localStorage.getItem("galatrixa-lang") || "en");
+    if (urlLang === "pt" || urlLang === "en") {
+        localStorage.setItem("galatrixa-lang", currentLang);
+    }
 
-    // Update active visual state for language buttons
+    // Update active visual state, <html lang>, and document title for language buttons
     const updateLangBtnStyles = () => {
+        document.documentElement.lang = currentLang;
         if (currentLang === "pt") {
             btnPt.classList.add("active");
             btnEn.classList.remove("active");
             document.body.classList.add("lang-pt");
             document.body.classList.remove("lang-en");
+            document.title = "GalaTrixa | Lagartixa da Madeira e Lagartos da Macaronésia (Gallotia & Teira)";
         } else {
             btnEn.classList.add("active");
             btnPt.classList.remove("active");
             document.body.classList.add("lang-en");
             document.body.classList.remove("lang-pt");
+            document.title = "GalaTrixa | Lizards of Macaronesia - Lagartos da Macaronésia (Gallotia, Teira & Tarentola)";
         }
     };
 
@@ -335,21 +345,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const syncText = document.getElementById("gallery-sync-text");
     const syncResetBtn = document.getElementById("gallery-sync-reset");
     const lightbox = document.getElementById("gallery-lightbox");
+    const inquiryModal = document.getElementById("inquiry-modal");
+    const openInquiryBtn = document.getElementById("open-inquiry-btn");
+
+    if (openInquiryBtn && inquiryModal) {
+        openInquiryBtn.addEventListener("click", () => {
+            inquiryModal.showModal();
+        });
+    }
 
     // Fallback for browsers without <dialog closedby="any"> support
-    if (lightbox && !("closedBy" in HTMLDialogElement.prototype)) {
+    if (!("closedBy" in HTMLDialogElement.prototype)) {
         const outside = (e, dlg) => {
             const r = dlg.getBoundingClientRect();
             return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
         };
-        let pressedOutside = false;
-        lightbox.addEventListener("pointerdown", (e) => {
-            pressedOutside = outside(e, lightbox);
-        });
-        lightbox.addEventListener("pointerup", (e) => {
-            if (pressedOutside && outside(e, lightbox)) {
-                lightbox.close();
-            }
+        document.querySelectorAll('dialog[closedby="any"]').forEach((dlg) => {
+            let pressedOutside = false;
+            dlg.addEventListener("pointerdown", (e) => {
+                pressedOutside = outside(e, dlg);
+            });
+            dlg.addEventListener("pointerup", (e) => {
+                if (pressedOutside && outside(e, dlg)) {
+                    dlg.close();
+                }
+            });
         });
     }
 
@@ -758,10 +778,18 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchSightings("all", 1, false);
 
     // Language Toggle Click Handlers
+    const syncLangUrl = (lang) => {
+        if (window.history && window.history.replaceState) {
+            const newUrl = `${window.location.pathname}?lang=${lang}${window.location.hash || ""}`;
+            window.history.replaceState({}, "", newUrl);
+        }
+    };
+
     btnEn.addEventListener("click", () => {
         if (currentLang !== "en") {
             currentLang = "en";
             localStorage.setItem("galatrixa-lang", currentLang);
+            syncLangUrl(currentLang);
             updateLangBtnStyles();
             updateSpeciesCard(selectElement.value);
             renderGalleryCards(currentGalleryItems, false);
@@ -772,6 +800,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentLang !== "pt") {
             currentLang = "pt";
             localStorage.setItem("galatrixa-lang", currentLang);
+            syncLangUrl(currentLang);
             updateLangBtnStyles();
             updateSpeciesCard(selectElement.value);
             renderGalleryCards(currentGalleryItems, false);
