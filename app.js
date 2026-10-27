@@ -521,25 +521,42 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    const lightboxImgContainer = document.getElementById("lightbox-image-container");
+    const lightboxImgEl = document.getElementById("lightbox-img");
+
+    const resetLightboxImage = () => {
+        if (!lightboxImgEl || !lightboxImgContainer) return;
+        lightboxImgEl.onload = null;
+        lightboxImgEl.onerror = null;
+        lightboxImgEl.classList.remove("is-loaded");
+        lightboxImgContainer.classList.add("is-loading");
+        lightboxImgEl.removeAttribute("src");
+        lightboxImgEl.alt = "";
+    };
+
+    if (lightbox) {
+        lightbox.addEventListener("close", resetLightboxImage);
+    }
+
     const openLightbox = (item) => {
         if (!lightbox) return;
         const badgeEl = document.getElementById("lightbox-badge");
         const titleEl = document.getElementById("lightbox-title");
         const sciEl = document.getElementById("lightbox-scientific");
-        const imgEl = document.getElementById("lightbox-img");
         const obsEl = document.getElementById("lightbox-observer");
         const locEl = document.getElementById("lightbox-location");
         const dateEl = document.getElementById("lightbox-date");
         const licEl = document.getElementById("lightbox-license");
         const linkEl = document.getElementById("lightbox-inat-link");
 
+        // Immediately clear previous image and show solid placeholder + spinner
+        resetLightboxImage();
+
         const displayTitle = item.commonName[currentLang] || item.commonName.en || item.scientificName;
         badgeEl.className = `island-badge ${item.badgeClass}`;
         badgeEl.textContent = item.location.split(",").slice(-1)[0].trim() || "Macaronesia";
         titleEl.textContent = displayTitle;
         sciEl.innerHTML = `<em>${item.scientificName}</em>`;
-        imgEl.src = item.largeUrl || item.thumbUrl;
-        imgEl.alt = `${displayTitle} (${item.scientificName}) — © ${item.observer}`;
         obsEl.textContent = `© ${item.observer}`;
         locEl.textContent = item.location;
         dateEl.textContent = item.date;
@@ -547,6 +564,23 @@ document.addEventListener("DOMContentLoaded", () => {
         linkEl.href = item.obsUrl;
 
         lightbox.showModal();
+
+        if (lightboxImgEl && lightboxImgContainer) {
+            const targetUrl = item.largeUrl || item.thumbUrl;
+            lightboxImgEl.alt = `${displayTitle} (${item.scientificName}) — © ${item.observer}`;
+            lightboxImgEl.onload = () => {
+                lightboxImgContainer.classList.remove("is-loading");
+                lightboxImgEl.classList.add("is-loaded");
+            };
+            lightboxImgEl.onerror = () => {
+                if (lightboxImgEl.src !== item.thumbUrl && item.thumbUrl) {
+                    lightboxImgEl.src = item.thumbUrl;
+                } else {
+                    lightboxImgContainer.classList.remove("is-loading");
+                }
+            };
+            lightboxImgEl.src = targetUrl;
+        }
     };
 
     const renderGalleryCards = (items, append = false) => {
